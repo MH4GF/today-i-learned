@@ -3,13 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 type SquareProps = {
-  value: string | null;
+  value: Square;
   onClick: Function; // 関数も型に指定できるんやな
 };
-
-interface ISquareState {
-  value: string | null;
-}
 
 const Square = (props: SquareProps) => {
   return (
@@ -20,13 +16,13 @@ const Square = (props: SquareProps) => {
 };
 
 type BoardProps = {
-  squares: (string | null)[];
+  squares: SquaresArray;
   onClick: Function;
 };
 
 // IBoardStateのIはInterfaceなのかな？
 interface IBoardState {
-  squares: (string | null)[];
+  squares: SquaresArray;
   xIsNext: boolean;
 }
 
@@ -65,14 +61,14 @@ class Board extends React.Component<BoardProps, IBoardState> {
 
 type GameProps = {
   history: {
-    squares: (string | null)[];
+    squares: SquaresArray;
   }[];
   xIsNext: boolean;
 };
 
 interface IGameState {
   history: {
-    squares: (string | null)[];
+    squares: SquaresArray;
   }[];
   stepNumber: number;
   xIsNext: boolean;
@@ -158,7 +154,10 @@ class Game extends React.Component<{}, IGameState> {
   }
 }
 
-const calculateWinner = (squares: (string | null)[]) => {
+type Square = string | null;
+type SquaresArray = Square[];
+
+const calculateWinner = (squares: SquaresArray) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
