@@ -1,0 +1,16 @@
+{
+  "name": "today-i-learned",
+  "version": "1.0.0",
+  "repository": "ssh://git@github.com/MH4GF/today-i-learned.git",
+  "author": "MH4GF <rixi436@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "honkit build ",
+    "serve": "honkit serve ",
+    "sm": "book sm --title today-i-learned --ignores node_modules"
+  },
+  "dependencies": {
+    "gitbook-summary": "^1.2.2",
+    "honkit": "^3.6.6"
+  }
+}
